@@ -20,7 +20,7 @@ $stripe = new StripeClient(
 $stripe->subscriptions->create([
     'customer' => $id,// id du client
     'items' => [
-        ['price' => $price[0]],
+        ['price' => $price],
     ],
 ]);;
 
@@ -28,7 +28,7 @@ $stripe->subscriptions->create([
 
 //? paiement unique
 $stripe->charges->create([
-    'amount' => $_COOKIE['prix'],
+    'amount' => $price,
     'currency' => 'eur',
     'source' => 'tok_visa',
     'description' => 'paiement de test',

@@ -28,9 +28,11 @@ let form = document.getElementById("payment-form");
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  //recuperation du prix 
   let price = window.location["search"];
   price = price.split("=")[1];
   console.log(price);
+  
   stripe.createToken(card).then(function (result) {
     if (result.error) {
       //* gestion et affichage des erreurs
